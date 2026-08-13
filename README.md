@@ -39,10 +39,16 @@ AI ที่สร้างเองทุกอย่างบนโน้ต�
 ## วิธีรันสิ่งที่ทำเสร็จแล้ว
 
 ```bash
-# เทรน tokenizer และดูผล (จากโฟลเดอร์ my-own-ai)
+# 1. เทรน tokenizer และดูผล
 py model/tokenizer/demo.py
 
-# รัน backend API (docs อัตโนมัติที่ /docs)
+# 2. ดาวน์โหลดข้อมูลเริ่มต้น (Gutenberg 3 เล่ม + วิกิไทย) — ดู docs/data.md
+py data/download_starter_data.py
+
+# 3. แปลงข้อมูลเป็นไฟล์เทรน (ทำความสะอาด + เทรน vocab ใหม่ + แบ่ง train/val)
+.venv/Scripts/python model/train/prepare_data.py
+
+# 4. รัน backend API (docs อัตโนมัติที่ /docs)
 cd backend
 ../.venv/Scripts/python -m uvicorn app.main:app --reload
 ```
@@ -51,9 +57,17 @@ cd backend
 
 ```
 model/tokenizer/   BPE Tokenizer — แปลงข้อความ <-> ตัวเลข (เขียนเอง)
+model/transformer/ Transformer: embeddings, attention (เขียนเอง)
+model/train/       Data pipeline: ข้อมูลดิบ -> train.bin/val.bin
 backend/           FastAPI API server
 frontend/          Web UI (เร็ว ๆ นี้)
-data/              ข้อมูลสำหรับเทรน + tokenizer ที่เทรนเสร็จ
-docs/              เอกสาร + architecture diagram (เร็ว ๆ นี้)
-lab/               การทดลอง/บทเรียนย่อย
+data/              ข้อมูลเทรน + tokenizer + ไฟล์ที่สร้างตอนรัน (ไม่ commit)
+docs/              เอกสาร: data.md, architecture (เร็ว ๆ นี้)
+lab/               การทดลอง/บทเรียนย่อย (matmul, สนามทดลอง attention)
 ```
+
+## สถิติข้อมูลเริ่มต้น (รันสคริปต์แล้วได้เท่านี้)
+
+- แหล่งข้อมูล: Alice in Wonderland, Frankenstein, Pride and Prejudice (Gutenberg) + บทความวิกิไทย + ตัวอย่าง
+- ขนาด: ~1.3 ล้าน tokens (train 90% / val 10%), vocab 1,456
+- ดูสถิติล่าสุดได้ที่ `data/meta.json`

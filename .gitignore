@@ -10,3 +10,4 @@ __pycache__/
 # เช่น data/tokenizer.json (สร้างใหม่ได้จาก demo.py)
 data/*
 !data/sample_corpus.txt
+!data/*.py
