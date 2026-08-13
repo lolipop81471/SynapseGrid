@@ -1,0 +1,12 @@
+# Environment / Python
+.venv/
+__pycache__/
+*.pyc
+
+# ไฟล์ที่ถูกสร้างตอนรัน
+*.log
+
+# โฟลเดอร์ข้อมูล — เก็บไฟล์ต้นฉบับ (corpus) แต่ไม่เก็บของที่สร้างตอนรัน
+# เช่น data/tokenizer.json (สร้างใหม่ได้จาก demo.py)
+data/*
+!data/sample_corpus.txt
