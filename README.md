@@ -1,6 +1,10 @@
 # SynapseGrid AI Infrastructure
-
-AI — **ไม่พึ่ง Ollama, ไม่พึ่งโมเดลสำเร็จรูป, ไม่พึ่ง cloud**
-
-เพื่อเข้าใจระบบภายในของ AI แบบรากฐานจริง ๆ และมี AI เป็นของตัวเอง
+เข้าใจระบบภายในของ AI แบบรากฐานจริง ๆ และมี AI เป็นของตัวเอง
 ปรับ performance ได้
+
+Hardware/Compute layer — GPU, TPU, network, storage
+Orchestration layer    — Kubernetes, Slurm, cluster management
+Data layer             — data pipeline, feature store, vector database
+Training/Serving layer — training framework, inference engine
+MLOps/LLMOps layer     — experiment tracking, model registry, monitoring
+Application layer      — API, RAG, agent framework
