@@ -8,3 +8,5 @@ Data layer             — data pipeline, feature store, vector database
 Training/Serving layer — training framework, inference engine
 MLOps/LLMOps layer     — experiment tracking, model registry, monitoring
 Application layer      — API, RAG, agent framework
+
+### พักโปรเจคเรียนรู้พื้นฐาน
